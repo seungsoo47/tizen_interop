@@ -159,6 +159,9 @@ def update_tizen_dart(version):
             'vc_engine': 'vc_engineSymbols',
             'vc_manager': 'vc_managerSymbols',
             'app_control_uri': 'capiAppfwAppControlUriSymbols',
+            'media_editor': 'capiMediaEditorSymbols',
+            'ml_api_service': 'capiMlServiceSymbols',
+            'resource_monitor': 'capiSystemResourceMonitorSymbols',
         }
         
         camel_candidate = "".join(p.capitalize() for p in module_name.split("_"))
@@ -178,7 +181,7 @@ def update_tizen_dart(version):
         elif basename == 'generated_bindings_vc_manager.dart':
             possible_hidden_names.extend(['vc_cmd_list_h', 'vc_cmd_list_s', 'vc_supported_language_cb', 'vc_supported_language_cbFunction', 'Dartvc_supported_language_cbFunction', 'vc_state_e', 'vc_service_state_e', 'vc_result_event_e', 'vc_result_cb', 'vc_result_cbFunction', 'Dartvc_result_cbFunction', 'vc_state_changed_cb', 'vc_state_changed_cbFunction', 'Dartvc_state_changed_cbFunction', 'vc_service_state_changed_cb', 'vc_service_state_changed_cbFunction', 'Dartvc_service_state_changed_cbFunction', 'vc_current_language_changed_cb', 'vc_current_language_changed_cbFunction', 'Dartvc_current_language_changed_cbFunction', 'vc_error_cb', 'vc_error_cbFunction', 'Dartvc_error_cbFunction', 'vc_error_e', 'vc_audio_channel_e', 'vc_audio_type_e', 'vc_feedback_event_e', 'vc_tts_utterance_status_e', 'VC_COMMAND_TYPE_FOREGROUND', 'VC_COMMAND_TYPE_BACKGROUND', 'VC_COMMAND_TYPE_ALL', 'VC_RESULT_MESSAGE_SUCCESS', 'VC_RESULT_MESSAGE_REJECTED', 'VC_RESULT_MESSAGE_NONE', 'VC_RESULT_MESSAGE_ERROR_TOO_LOUD'])
         elif basename == 'generated_bindings_webrtc.dart':
-            possible_hidden_names.extend(['bundle', 'media_format_h', 'media_packet_h', 'sound_stream_info_h', 'sound_stream_info_s', 'media_format_s', 'media_packet_s'])
+            possible_hidden_names.extend(['bundle', 'media_format_h', 'media_packet_h', 'sound_stream_info_h', 'sound_stream_info_s', 'media_format_s', 'media_packet_s', 'UnnamedStruct1', 'UnnamedStruct2', 'UnnamedUnion1'])
         elif basename == 'generated_bindings_csr_client.dart':
             possible_hidden_names.extend(['time_t', 'Dart__time_t', 'Darttime_t'])
         elif basename == 'generated_bindings_data_control.dart':
@@ -191,14 +194,10 @@ def update_tizen_dart(version):
             possible_hidden_names.extend(['bundle'])
         elif basename == 'generated_bindings_mv_common.dart':
             possible_hidden_names.extend(['media_packet_h', 'media_packet_s', 'Dartmedia_packet_hFunction'])
-        elif basename in ['generated_bindings_mv_face.dart', 'generated_bindings_mv_inference.dart']:
+        elif basename.startswith('generated_bindings_mv_') and basename != 'generated_bindings_mv_common.dart':
             possible_hidden_names.extend(['mv_source_h', 'mv_source_s', 'mv_engine_config_h', 'mv_rectangle_s', 'mv_point_s', 'mv_quadrangle_s'])
-        elif basename == 'generated_bindings_mv_image.dart':
-            possible_hidden_names.extend(['mv_source_h', 'mv_source_s', 'mv_engine_config_h', 'mv_quadrangle_s', 'mv_point_s', 'mv_rectangle_s'])
-        elif basename == 'generated_bindings_mv_surveillance.dart':
-            possible_hidden_names.extend(['mv_point_s', 'mv_engine_config_h', 'mv_source_h'])
-        elif basename in ['generated_bindings_nnstreamer_single.dart', 'generated_bindings_nntrainer.dart']:
-            possible_hidden_names.extend(['ml_tensors_info_h', 'ml_tensors_info_s', 'ml_nnfw_type_e', 'ml_nnfw_hw_e', 'ml_tensors_data_h', 'ml_tensors_data_s'])
+        elif basename in ['generated_bindings_nnstreamer.dart', 'generated_bindings_nnstreamer_single.dart', 'generated_bindings_nntrainer.dart']:
+            possible_hidden_names.extend(['ml_tensors_info_h', 'ml_tensors_info_s', 'ml_nnfw_type_e', 'ml_nnfw_hw_e', 'ml_tensors_data_h', 'ml_tensors_data_s', 'ml_pipeline_state_e', 'ml_option_h', 'ml_option_s'])
         elif basename == 'generated_bindings_notification.dart':
             possible_hidden_names.extend(['time_t', 'Dart__time_t', 'Darttime_t', 'app_control_h', 'app_control_s', 'bundle', 'notification_h'])
         elif basename == 'generated_bindings_notification_ex.dart':

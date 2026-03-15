@@ -1,0 +1,26 @@
+preamble: |
+  // Copyright 2021 Samsung Electronics Co., Ltd. All rights reserved.
+  // Use of this source code is governed by a BSD-style license that can be
+  // found in the LICENSE file.
+  // ignore_for_file: type=lint, unused_element, unused_field
+
+name: Tizen70RpcPort
+description: Dart bindings for Tizen rpc-port APIs.
+output: ../../lib/src/bindings/7.0/generated_bindings_rpc_port.dart
+llvm-path:
+- /usr/lib/llvm-12
+headers:
+  entry-points:
+  - entrypoints-rpc-port.h
+  include-directives:
+  - '**/rpc-port.h'
+  - '**/rpc-port-parcel.h'
+compiler-opts:
+- -m32
+- -Wno-incomplete-setjmp-declaration
+- -I./rootstraps/7.0/usr/include/
+- -I./rootstraps/7.0/usr/include/appfw/
+- -I./rootstraps/7.0/usr/include/rpc-port/
+enums:
+  rename:
+    _+(.*): $1
