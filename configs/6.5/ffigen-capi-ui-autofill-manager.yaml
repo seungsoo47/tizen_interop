@@ -1,0 +1,24 @@
+preamble: |
+  // Copyright 2021 Samsung Electronics Co., Ltd. All rights reserved.
+  // Use of this source code is governed by a BSD-style license that can be
+  // found in the LICENSE file.
+  // ignore_for_file: type=lint, unused_element, unused_field
+
+name: Tizen65CapiUiAutofillManager
+description: Dart bindings for Tizen capi-ui-autofill-manager APIs.
+output: ../../lib/src/bindings/6.5/generated_bindings_capi_ui_autofill_manager.dart
+llvm-path:
+- /usr/lib/llvm-12
+headers:
+  entry-points:
+  - entrypoints-capi-ui-autofill-manager.h
+  include-directives:
+  - '**/autofill_manager.h'
+compiler-opts:
+- -m32
+- -Wno-incomplete-setjmp-declaration
+- -I./rootstraps/6.5/usr/include/
+- -I./rootstraps/6.5/usr/include/autofill/
+enums:
+  rename:
+    _+(.*): $1

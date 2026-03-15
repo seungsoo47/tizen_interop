@@ -1,0 +1,28 @@
+preamble: |
+  // Copyright 2021 Samsung Electronics Co., Ltd. All rights reserved.
+  // Use of this source code is governed by a BSD-style license that can be
+  // found in the LICENSE file.
+  // ignore_for_file: type=lint, unused_element, unused_field
+
+name: Tizen65Notification
+description: Dart bindings for Tizen notification APIs.
+output: ../../lib/src/bindings/6.5/generated_bindings_notification.dart
+llvm-path:
+- /usr/lib/llvm-12
+headers:
+  entry-points:
+  - entrypoints-notification.h
+  include-directives:
+  - '**/notification.h'
+  - '**/notification_error.h'
+  - '**/notification_type.h'
+  - '**/notification_status.h'
+compiler-opts:
+- -m32
+- -Wno-incomplete-setjmp-declaration
+- -I./rootstraps/6.5/usr/include/
+- -I./rootstraps/6.5/usr/include/notification/
+- -I./rootstraps/6.5/usr/include/appfw/
+enums:
+  rename:
+    _+(.*): $1
