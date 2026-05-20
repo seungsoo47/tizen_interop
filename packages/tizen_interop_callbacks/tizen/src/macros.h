@@ -120,6 +120,8 @@ extern unsigned long interop_callbacks_thread_id;
     }                                                                          \
     CallbackPointer _callback = _iter->second;                                 \
     pid_t _system_thread_id = gettid();                                        \
+    LDEBUG("_system_thread_id: %d, interop_callbacks_thread_id:%d",            \
+           _system_thread_id, interop_callbacks_thread_id);                    \
     if ((_system_thread_id != -1 && interop_callbacks_thread_id != -1) &&      \
         (_system_thread_id == interop_callbacks_thread_id)) {                  \
       LDEBUG("calling Dart callback directly");                                \
@@ -143,7 +145,7 @@ extern unsigned long interop_callbacks_thread_id;
       _cv.notify_one();                                                        \
     };                                                                         \
                                                                                \
-    LDEBUG("calling RequestCallbackCall()");                                   \
+    LDEBUG("111. calling RequestCallbackCall()");                              \
     RequestCallbackCall(new CallbackWrapper(_wrapper));                        \
                                                                                \
     LDEBUG("waiting for notification");                                        \

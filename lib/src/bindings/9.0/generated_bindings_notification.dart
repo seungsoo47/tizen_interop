@@ -62,6 +62,99 @@ class Tizen90Notification {
       _notification_status_message_postPtr
           .asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
+  int notification_register_detailed_changed_cb(
+    notification_detailed_changed_cb callback,
+    ffi.Pointer<ffi.Void> user_data,
+  ) {
+    return _notification_register_detailed_changed_cb(
+      callback,
+      user_data,
+    );
+  }
+
+  late final _notification_register_detailed_changed_cbPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(
+                  notification_detailed_changed_cb, ffi.Pointer<ffi.Void>)>>(
+      'notification_register_detailed_changed_cb');
+  late final _notification_register_detailed_changed_cb =
+      _notification_register_detailed_changed_cbPtr.asFunction<
+          int Function(
+              notification_detailed_changed_cb, ffi.Pointer<ffi.Void>)>();
+
+  int notification_unregister_detailed_changed_cb(
+    notification_detailed_changed_cb callback,
+    ffi.Pointer<ffi.Void> user_data,
+  ) {
+    return _notification_unregister_detailed_changed_cb(
+      callback,
+      user_data,
+    );
+  }
+
+  late final _notification_unregister_detailed_changed_cbPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(
+                  notification_detailed_changed_cb, ffi.Pointer<ffi.Void>)>>(
+      'notification_unregister_detailed_changed_cb');
+  late final _notification_unregister_detailed_changed_cb =
+      _notification_unregister_detailed_changed_cbPtr.asFunction<
+          int Function(
+              notification_detailed_changed_cb, ffi.Pointer<ffi.Void>)>();
+
+  int notification_clear(
+    int type,
+  ) {
+    return _notification_clear(
+      type,
+    );
+  }
+
+  late final _notification_clearPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int32)>>(
+          'notification_clear');
+  late final _notification_clear =
+      _notification_clearPtr.asFunction<int Function(int)>();
+
+  int notification_status_monitor_message_cb_set(
+    notification_status_message_cb callback,
+    ffi.Pointer<ffi.Void> user_data,
+  ) {
+    return _notification_status_monitor_message_cb_set(
+      callback,
+      user_data,
+    );
+  }
+
+  late final _notification_status_monitor_message_cb_setPtr = _lookup<
+          ffi.NativeFunction<
+              ffi.Int Function(
+                  notification_status_message_cb, ffi.Pointer<ffi.Void>)>>(
+      'notification_status_monitor_message_cb_set');
+  late final _notification_status_monitor_message_cb_set =
+      _notification_status_monitor_message_cb_setPtr.asFunction<
+          int Function(
+              notification_status_message_cb, ffi.Pointer<ffi.Void>)>();
+
+  int notification_get_list(
+    int type,
+    int count,
+    ffi.Pointer<notification_list_h> list,
+  ) {
+    return _notification_get_list(
+      type,
+      count,
+      list,
+    );
+  }
+
+  late final _notification_get_listPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int32, ffi.Int,
+              ffi.Pointer<notification_list_h>)>>('notification_get_list');
+  late final _notification_get_list = _notification_get_listPtr
+      .asFunction<int Function(int, int, ffi.Pointer<notification_list_h>)>();
+
   /// Sets an absolute path for an image file to display on the notification view.
   ///
   /// **Since Tizen:**
@@ -99,8 +192,8 @@ class Tizen90Notification {
   /// if (noti == NULL)
   /// return;
   ///
-  /// noti_err = notification_set_image(noti, NOTIFICATION_IMAGE_TYPE_ICON, APP_IMAGE_FULL_PATH);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE) {
+  /// noti_err = notification_set_image(noti, NOTIFICATION_IMAGE_TYPE_ICON,
+  /// APP_IMAGE_FULL_PATH); if (noti_err != NOTIFICATION_ERROR_NONE) {
   /// notification_free(noti);
   /// return;
   /// }
@@ -131,7 +224,8 @@ class Tizen90Notification {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - Do not free `image_path`. It will be freed when notification_free() is called.
+  /// - Do not free `image_path`. It will be freed when notification_free()
+  /// - is called.
   ///
   /// **Parameters:**
   /// - `noti` (in): Notification handle
@@ -161,9 +255,8 @@ class Tizen90Notification {
   /// char *image_path = NULL;
   /// int noti_err = NOTIFICATION_ERROR_NONE;
   ///
-  /// noti_err = notification_get_image(noti, NOTIFICATION_IMAGE_TYPE_ICON, &image_path);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE)
-  /// return;
+  /// noti_err = notification_get_image(noti, NOTIFICATION_IMAGE_TYPE_ICON,
+  /// &image_path); if (noti_err != NOTIFICATION_ERROR_NONE) return;
   /// }
   /// ```
   int notification_get_image(
@@ -388,8 +481,8 @@ class Tizen90Notification {
   /// return;
   ///
   /// noti_err = notification_set_text(noti, NOTIFICATION_TEXT_TYPE_TITLE,
-  /// "I'm Title", "IDS_APP_BODY_IM_TITLE", NOTIFICATION_VARIABLE_TYPE_NONE);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE) {
+  /// "I'm Title", "IDS_APP_BODY_IM_TITLE",
+  /// NOTIFICATION_VARIABLE_TYPE_NONE); if (noti_err != NOTIFICATION_ERROR_NONE) {
   /// notification_free(noti);
   /// return;
   /// }
@@ -425,7 +518,8 @@ class Tizen90Notification {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - Do not free `text`. It will be freed when notification_free() is called.
+  /// - Do not free `text`. It will be freed when notification_free() is
+  /// - called.
   ///
   /// **Parameters:**
   /// - `noti` (in): The notification handle
@@ -449,9 +543,8 @@ class Tizen90Notification {
   /// int noti_err = NOTIFICATION_ERROR_NONE;
   /// char *text = NULL;
   ///
-  /// noti_err = notification_get_text(noti, NOTIFICATION_TEXT_TYPE_TITLE, &text);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE)
-  /// return;
+  /// noti_err = notification_get_text(noti, NOTIFICATION_TEXT_TYPE_TITLE,
+  /// &text); if (noti_err != NOTIFICATION_ERROR_NONE) return;
   ///
   /// }
   /// ```
@@ -579,9 +672,8 @@ class Tizen90Notification {
   /// notification_h noti = NULL;
   /// int noti_err = NOTIFICATION_ERROR_NONE;
   ///
-  /// noti_err = notification_set_sound(noti, NOTIFICATION_SOUND_TYPE_DEFAULT, NULL);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE)
-  /// return;
+  /// noti_err = notification_set_sound(noti, NOTIFICATION_SOUND_TYPE_DEFAULT,
+  /// NULL); if (noti_err != NOTIFICATION_ERROR_NONE) return;
   ///
   /// }
   /// ```
@@ -610,7 +702,8 @@ class Tizen90Notification {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - Do not free `path`. It will be freed when notification_free() is called.
+  /// - Do not free `path`. It will be freed when notification_free() is
+  /// - called.
   ///
   /// **Parameters:**
   /// - `noti` (in): The notification handle
@@ -686,9 +779,9 @@ class Tizen90Notification {
   /// notification_h noti = NULL;
   /// int noti_err = NOTIFICATION_ERROR_NONE;
   ///
-  /// noti_err = notification_set_vibration(noti, NOTIFICATION_VIBRATION_TYPE_DEFAULT, NULL);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE)
-  /// return;
+  /// noti_err = notification_set_vibration(noti,
+  /// NOTIFICATION_VIBRATION_TYPE_DEFAULT, NULL); if (noti_err !=
+  /// NOTIFICATION_ERROR_NONE) return;
   ///
   /// }
   /// ```
@@ -717,7 +810,8 @@ class Tizen90Notification {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - Do not free `path`. It will be freed when notification_free() is called.
+  /// - Do not free `path`. It will be freed when notification_free() is
+  /// - called.
   ///
   /// **Parameters:**
   /// - `noti` (in): The notification handle
@@ -953,9 +1047,8 @@ class Tizen90Notification {
   /// int led_on_ms = 0;
   /// int led_off_ms = 0;
   ///
-  /// noti_err = notification_get_led_time_period(noti, &led_on_ms, &led_off_ms);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE)
-  /// return;
+  /// noti_err = notification_get_led_time_period(noti, &led_on_ms,
+  /// &led_off_ms); if (noti_err != NOTIFICATION_ERROR_NONE) return;
   ///
   /// }
   /// ```
@@ -994,7 +1087,8 @@ class Tizen90Notification {
   /// - <http://tizen.org/privilege/appmanager.launch>
   ///
   /// **Remarks:**
-  /// - Since 4.0, http://tizen.org/privilege/appmanager.launch privilege is additionally required.
+  /// - Since 4.0, http://tizen.org/privilege/appmanager.launch privilege
+  /// - is additionally required.
   ///
   /// **Parameters:**
   /// - `noti` (in): The notification handle
@@ -1025,9 +1119,9 @@ class Tizen90Notification {
   ///
   /// // Do something
   ///
-  /// noti_err = notification_set_launch_option(noti, NOTIFICATION_LAUNCH_OPTION_APP_CONTROL, (void *)app_control);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE) {
-  /// app_control_destroy(app_control);
+  /// noti_err = notification_set_launch_option(noti,
+  /// NOTIFICATION_LAUNCH_OPTION_APP_CONTROL, (void *)app_control); if (noti_err !=
+  /// NOTIFICATION_ERROR_NONE) { app_control_destroy(app_control);
   /// notification_free(noti);
   /// return;
   /// }
@@ -1083,9 +1177,9 @@ class Tizen90Notification {
   /// {
   /// app_control_h app_control = NULL;
   ///
-  /// noti_err = notification_get_launch_option(noti, NOTIFICATION_LAUNCH_OPTION_APP_CONTROL, (void *)&app_control);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE)
-  /// return;
+  /// noti_err = notification_get_launch_option(noti,
+  /// NOTIFICATION_LAUNCH_OPTION_APP_CONTROL, (void *)&app_control); if (noti_err !=
+  /// NOTIFICATION_ERROR_NONE) return;
   ///
   /// // Do something
   ///
@@ -1126,7 +1220,8 @@ class Tizen90Notification {
   /// - <http://tizen.org/privilege/appmanager.launch>
   ///
   /// **Remarks:**
-  /// - Since 4.0, http://tizen.org/privilege/appmanager.launch privilege is additionally required.
+  /// - Since 4.0, http://tizen.org/privilege/appmanager.launch privilege
+  /// - is additionally required.
   ///
   /// **Parameters:**
   /// - `noti` (in): The notification handle
@@ -1160,9 +1255,9 @@ class Tizen90Notification {
   ///
   /// // Do something
   ///
-  /// noti_err = notification_set_event_handler(noti, NOTIFICATION_EVENT_TYPE_CLICK_ON_BUTTON_1, app_control);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE) {
-  /// app_control_destroy(app_control);
+  /// noti_err = notification_set_event_handler(noti,
+  /// NOTIFICATION_EVENT_TYPE_CLICK_ON_BUTTON_1, app_control); if (noti_err !=
+  /// NOTIFICATION_ERROR_NONE) { app_control_destroy(app_control);
   /// notification_free(noti);
   /// return;
   /// }
@@ -1223,10 +1318,9 @@ class Tizen90Notification {
   ///
   /// // Do something
   ///
-  /// noti_err = notification_get_event_handler(noti, NOTIFICATION_EVENT_TYPE_CLICK_ON_BUTTON_1, &app_control);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE) {
-  /// notification_free(noti);
-  /// return;
+  /// noti_err = notification_get_event_handler(noti,
+  /// NOTIFICATION_EVENT_TYPE_CLICK_ON_BUTTON_1, &app_control); if (noti_err !=
+  /// NOTIFICATION_ERROR_NONE) { notification_free(noti); return;
   /// }
   ///
   /// app_control_destroy(app_control);
@@ -1284,7 +1378,8 @@ class Tizen90Notification {
   /// if (noti == NULL)
   /// return;
   ///
-  /// noti_err = notification_set_property(noti, NOTIFICATION_PROP_DISPLAY_ONLY_SIMMODE | NOTIFICATION_PROP_DISABLE_APP_LAUNCH);
+  /// noti_err = notification_set_property(noti,
+  /// NOTIFICATION_PROP_DISPLAY_ONLY_SIMMODE | NOTIFICATION_PROP_DISABLE_APP_LAUNCH);
   /// if (noti_err != NOTIFICATION_ERROR_NONE) {
   /// notification_free(noti);
   /// return;
@@ -1388,9 +1483,9 @@ class Tizen90Notification {
   /// if (noti == NULL)
   /// return;
   ///
-  /// noti_err = notification_set_display_applist(noti, NOTIFICATION_DISPLAY_APP_NOTIFICATION_TRAY |
-  /// NOTIFICATION_DISPLAY_APP_TICKER | NOTIFICATION_DISPLAY_APP_INDICATOR);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE) {
+  /// noti_err = notification_set_display_applist(noti,
+  /// NOTIFICATION_DISPLAY_APP_NOTIFICATION_TRAY | NOTIFICATION_DISPLAY_APP_TICKER |
+  /// NOTIFICATION_DISPLAY_APP_INDICATOR); if (noti_err != NOTIFICATION_ERROR_NONE) {
   /// notification_free(noti);
   /// return;
   /// }
@@ -1904,7 +1999,8 @@ class Tizen90Notification {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - The specific error code can be obtained using the get_last_result() method. Error codes are described in Exception section.
+  /// - The specific error code can be obtained using the get_last_result()
+  /// - method. Error codes are described in Exception section.
   /// - The returned value should be released using notification_free().
   ///
   /// **Parameters:**
@@ -1961,7 +2057,8 @@ class Tizen90Notification {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - This cloned notification handle should be freed using notification_free().
+  /// - This cloned notification handle should be freed using
+  /// - notification_free().
   ///
   /// **Parameters:**
   /// - `noti` (in): The notification handle
@@ -2127,7 +2224,8 @@ class Tizen90Notification {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - Do not free `tag`. It will be freed when notification_free() is called.
+  /// - Do not free `tag`. It will be freed when notification_free() is
+  /// - called.
   ///
   /// **Parameters:**
   /// - `noti` (in): Notification handle
@@ -2189,7 +2287,8 @@ class Tizen90Notification {
   /// - <http://tizen.org/privilege/notification>
   ///
   /// **Remarks:**
-  /// - The specific error code can be obtained using the get_last_result() method. Error codes are described in Exception section.
+  /// - The specific error code can be obtained using the get_last_result()
+  /// - method. Error codes are described in Exception section.
   /// - The returned value should be released using notification_free().
   ///
   /// **Parameters:**
@@ -2349,7 +2448,8 @@ class Tizen90Notification {
   /// - 2.4
   ///
   /// **Remarks:**
-  /// - Do not free `pkgname`. It will be freed when notification_free() is called.
+  /// - Do not free `pkgname`. It will be freed when notification_free() is
+  /// - called.
   ///
   /// **Parameters:**
   /// - `noti` (in): Notification handle
@@ -2513,8 +2613,10 @@ class Tizen90Notification {
   /// - 2.4
   ///
   /// **Remarks:**
-  /// - When 'auto_remove' is set as false, the active notification will not be removed
-  /// - as long as the user removes the active notification or the app which posted the active notification removes the active notification.
+  /// - When 'auto_remove' is set as false, the active notification will not
+  /// - be removed
+  /// - as long as the user removes the active notification or the app which
+  /// - posted the active notification removes the active notification.
   ///
   /// **Parameters:**
   /// - `noti` (in): Notification handle
@@ -2632,7 +2734,8 @@ class Tizen90Notification {
   ///
   /// **Remarks:**
   /// - The number of templates is limited to 10.
-  /// - When you try to add more than 10 templates, `NOTIFICATION_ERROR_MAX_EXCEEDED` will be returned.
+  /// - When you try to add more than 10 templates,
+  /// - `NOTIFICATION_ERROR_MAX_EXCEEDED` will be returned.
   ///
   /// **Parameters:**
   /// - `noti` (in): Notification handle
@@ -2710,7 +2813,8 @@ class Tizen90Notification {
   /// - The returned handle should be destroyed using notification_free().
   /// - The specific error code can be obtained using get_last_result().
   /// - Error codes are described in the Exception section.
-  /// - If an invalid template name is given, the result will be set to `NOTIFICATION_ERROR_FROM_DB`.
+  /// - If an invalid template name is given, the result will be set to
+  /// - `NOTIFICATION_ERROR_FROM_DB`.
   ///
   /// **Parameters:**
   /// - `template_name` (in): Template name
@@ -2873,8 +2977,8 @@ class Tizen90Notification {
   /// return;
   ///
   /// noti_err = notification_set_display_applist(noti,
-  /// NOTIFICATION_DISPLAY_APP_NOTIFICATION_TRAY | NOTIFICATION_DISPLAY_APP_ACTIVE);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE)
+  /// NOTIFICATION_DISPLAY_APP_NOTIFICATION_TRAY |
+  /// NOTIFICATION_DISPLAY_APP_ACTIVE); if (noti_err != NOTIFICATION_ERROR_NONE)
   /// return;
   ///
   /// // Do something
@@ -2887,9 +2991,8 @@ class Tizen90Notification {
   /// if (noti_err != APP_CONTROL_ERROR_NONE)
   /// return;
   ///
-  /// noti_err = app_control_set_operation(app_control, APP_CONTROL_OPERATION_DEFAULT);
-  /// if (noti_err != APP_CONTROL_ERROR_NONE)
-  /// return;
+  /// noti_err = app_control_set_operation(app_control,
+  /// APP_CONTROL_OPERATION_DEFAULT); if (noti_err != APP_CONTROL_ERROR_NONE) return;
   ///
   /// noti_err = notification_set_event_handler(noti,
   /// NOTIFICATION_EVENT_TYPE_CLICK_ON_TEXT_INPUT_BUTTON,
@@ -2951,8 +3054,8 @@ class Tizen90Notification {
   /// return;
   ///
   /// noti_err = notification_set_display_applist(noti,
-  /// NOTIFICATION_DISPLAY_APP_NOTIFICATION_TRAY | NOTIFICATION_DISPLAY_APP_ACTIVE);
-  /// if (noti_err != NOTIFICATION_ERROR_NONE)
+  /// NOTIFICATION_DISPLAY_APP_NOTIFICATION_TRAY |
+  /// NOTIFICATION_DISPLAY_APP_ACTIVE); if (noti_err != NOTIFICATION_ERROR_NONE)
   /// return;
   ///
   /// // Do something
@@ -2965,9 +3068,8 @@ class Tizen90Notification {
   /// if (noti_err != APP_CONTROL_ERROR_NONE)
   /// return;
   ///
-  /// noti_err = app_control_set_operation(app_control, APP_CONTROL_OPERATION_DEFAULT);
-  /// if (noti_err != APP_CONTROL_ERROR_NONE)
-  /// return;
+  /// noti_err = app_control_set_operation(app_control,
+  /// APP_CONTROL_OPERATION_DEFAULT); if (noti_err != APP_CONTROL_ERROR_NONE) return;
   ///
   /// noti_err = notification_set_event_handler(notification,
   /// NOTIFICATION_EVENT_TYPE_CLICK_ON_BUTTON_1,
@@ -3820,6 +3922,52 @@ abstract class notification_block_state {
   /// < User set do not disturb mode
   static const int NOTIFICATION_BLOCK_STATE_DO_NOT_DISTURB = 2;
 }
+
+/// **Group:**
+/// - NOTIFICATION_MODULE @{
+/// @nodoc
+typedef notification_detailed_changed_cb
+    = ffi.Pointer<ffi.NativeFunction<notification_detailed_changed_cbFunction>>;
+/// @nodoc
+typedef notification_detailed_changed_cbFunction = ffi.Void Function(
+    ffi.Pointer<ffi.Void> data,
+    ffi.Int32 type,
+    ffi.Pointer<notification_op> op_list,
+    ffi.Int num_op);
+/// @nodoc
+typedef Dartnotification_detailed_changed_cbFunction = void Function(
+    ffi.Pointer<ffi.Void> data,
+    int type,
+    ffi.Pointer<notification_op> op_list,
+    int num_op);
+
+/// The structure for notification operation.
+///
+/// **Since Tizen:**
+/// - 2.3
+/// @nodoc
+typedef notification_op = _notification_op;
+/// @nodoc
+typedef notification_status_message_cb
+    = ffi.Pointer<ffi.NativeFunction<notification_status_message_cbFunction>>;
+/// @nodoc
+typedef notification_status_message_cbFunction = ffi.Void Function(
+    ffi.Pointer<ffi.Char> message, ffi.Pointer<ffi.Void> data);
+/// @nodoc
+typedef Dartnotification_status_message_cbFunction = void Function(
+    ffi.Pointer<ffi.Char> message, ffi.Pointer<ffi.Void> data);
+
+/// @nodoc
+final class _notification_list extends ffi.Struct {
+  external notification_list_h prev;
+
+  external notification_list_h next;
+
+  external notification_h noti;
+}
+
+/// @nodoc
+typedef notification_list_h = ffi.Pointer<_notification_list>;
 
 /// @nodoc
 const int NOTIFICATION_DO_NOT_SHOW_TIME_STAMP = -1;

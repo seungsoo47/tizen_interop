@@ -22,7 +22,7 @@
 #define LOG_ERROR(fmt, args...) LOG(DLOG_ERROR, fmt, ##args)
 
 // You can switch detailed debugging here: 0 - disabled
-#if 0
+#if 1
 #define LDEBUG(...) LOG_DEBUG(__VA_ARGS__)
 #else
 #define LDEBUG(...)

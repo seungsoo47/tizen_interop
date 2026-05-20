@@ -139,3 +139,7 @@ target-libraries:
   - libvc.so                                    # UIX / Voice control
   - libvc_engine.so                             # UIX / Voice control engine
   - libvc_manager.so                            # UIX / Voice control manager
+
+  # Additional libs
+  - libtts_setting.so                           # UIX / TSS Setting
+  - libstt_setting.so                           # UIX / STT Setting

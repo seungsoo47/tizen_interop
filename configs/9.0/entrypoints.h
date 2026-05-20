@@ -290,8 +290,10 @@
 #include <multi_assistant.h>
 #include <multi_assistant_common.h>
 #include <stt.h>
+#include <stt_setting.h>
 #include <stte.h>
 #include <tts.h>
+#include <tts_setting.h>
 #include <ttse.h>
 #include <vce.h>
 #include <voice_control.h>

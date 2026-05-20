@@ -28,6 +28,30 @@ class Tizen90CapiNetworkBluetooth {
           lookup)
       : _lookup = lookup;
 
+  /// @file bluetooth.h
+  ///
+  /// API to control the Bluetooth adapter and devices and communications.
+  ///
+  /// **Group:**
+  /// - CAPI_NETWORK_BLUETOOTH_MODULE
+  int bt_adapter_enable() {
+    return _bt_adapter_enable();
+  }
+
+  late final _bt_adapter_enablePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('bt_adapter_enable');
+  late final _bt_adapter_enable =
+      _bt_adapter_enablePtr.asFunction<int Function()>();
+
+  int bt_adapter_disable() {
+    return _bt_adapter_disable();
+  }
+
+  late final _bt_adapter_disablePtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('bt_adapter_disable');
+  late final _bt_adapter_disable =
+      _bt_adapter_disablePtr.asFunction<int Function()>();
+
   /// Initializes the Bluetooth API.
   ///
   /// **Since Tizen:**
@@ -35,7 +59,8 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - This function must be called before Bluetooth API starts.
-  /// - You must free all resources of the Bluetooth service by calling bt_deinitialize() if Bluetooth service is no longer needed.
+  /// - You must free all resources of the Bluetooth service by calling
+  /// - bt_deinitialize() if Bluetooth service is no longer needed.
   ///
   /// **Returns:**
   /// - 0 on success, otherwise a negative error value.
@@ -222,7 +247,9 @@ class Tizen90CapiNetworkBluetooth {
 
   /// Gets the name of local Bluetooth adapter.
   ///
-  /// Use this function to get the friendly name associated with Bluetooth device, retrieved by the remote Bluetooth devices.
+  /// Use this function to get the friendly name associated with Bluetooth
+  ///
+  /// device, retrieved by the remote Bluetooth devices.
   ///
   /// **Since Tizen:**
   /// - 2.3
@@ -378,8 +405,10 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - To connect to peer Bluetooth device, you need to know its Bluetooth address.
-  /// - The device discovery can be stopped by bt_adapter_stop_device_discovery().
+  /// - To connect to peer Bluetooth device, you need to know its Bluetooth
+  /// - address.
+  /// - The device discovery can be stopped by
+  /// - bt_adapter_stop_device_discovery().
   ///
   /// **Returns:**
   /// - 0 on success, otherwise a negative error value.
@@ -430,7 +459,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - The device discovery process will take 10 ~ 20 seconds to get all the devices in vicinity.
+  /// - The device discovery process will take 10 ~ 20 seconds to get all
+  /// - the devices in vicinity.
   ///
   /// **Returns:**
   /// - 0 on success, otherwise a negative error value.
@@ -475,8 +505,10 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - If Bluetooth discovery is in progress, other operations are not allowed and
-  /// - you have to either stop the discovery operation, or wait for it to be finished,
+  /// - If Bluetooth discovery is in progress, other operations are not
+  /// - allowed and
+  /// - you have to either stop the discovery operation, or wait for it to be
+  /// - finished,
   /// - before performing other operations.
   ///
   /// **Parameters:**
@@ -617,7 +649,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - The `device_info` must be released with bt_adapter_free_device_info() by you .
+  /// - The `device_info` must be released with
+  /// - bt_adapter_free_device_info() by you .
   ///
   /// **Parameters:**
   /// - `remote_address` (in): The address of remote device
@@ -1170,7 +1203,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - <http://tizen.org/privilege/bluetooth (public level privilege) is required to use this API since 5.5.>
+  /// - <http://tizen.org/privilege/bluetooth (public level privilege) is>
+  /// - required to use this API since 5.5.
   /// - The `hash` should be released using free().
   /// - The `randomizer` should be released using free().
   ///
@@ -1310,8 +1344,10 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - <http://tizen.org/privilege/bluetooth (public level privilege) is required to use this API since 5.5.>
-  /// - The `hash192`, randomizer192, hash256 and randomizer256 must be released using free().
+  /// - <http://tizen.org/privilege/bluetooth (public level privilege) is>
+  /// - required to use this API since 5.5.
+  /// - The `hash192`, randomizer192, hash256 and randomizer256 must be
+  /// - released using free().
   ///
   /// **Parameters:**
   /// - `hash192` (out): The hash value derived from the P-192 public key
@@ -1537,8 +1573,10 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - If Bluetooth LE scan is in progress, other operations are not allowed and
-  /// - you have to either stop the LE scan operation, or wait for it to be finished,
+  /// - If Bluetooth LE scan is in progress, other operations are not
+  /// - allowed and
+  /// - you have to either stop the LE scan operation, or wait for it
+  /// - to be finished,
   /// - before performing other operations.
   ///
   /// **Parameters:**
@@ -1679,9 +1717,11 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.3.1
   ///
   /// **Remarks:**
-  /// - The `uuids` must be iterated as count and each pointed data must be released with free().
-  /// - Then `uuids` must be released with free().
-  /// - 16-bit service UUID or 128-bit service UUID is supported. (e.g. 180F, 0000180F-0000-1000-8000-00805F9B34FB)
+  /// - The `uuids` must be iterated as count and each pointed data must be
+  /// - released with free(). Then `uuids` must be released with free().
+  /// - 16-bit
+  /// - service UUID or 128-bit service UUID is supported. (e.g. 180F,
+  /// - 0000180F-0000-1000-8000-00805F9B34FB)
   ///
   /// **Parameters:**
   /// - `info` (in): The scan result information
@@ -1850,9 +1890,10 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.3.1
   ///
   /// **Remarks:**
-  /// - The `uuids` must be iterated as count and each pointed data must be released with free().
-  /// - Then `uuids` must be released with free().
-  /// - 16-bit service solicitation UUID or 128-bit service solicitation UUID is supported.
+  /// - The `uuids` must be iterated as count and each pointed data must be
+  /// - released with free(). Then `uuids` must be released with free().
+  /// - 16-bit
+  /// - service solicitation UUID or 128-bit service solicitation UUID is supported.
   /// - (e.g. 180F, 0000180F-0000-1000-8000-00805F9B34FB)
   ///
   /// **Parameters:**
@@ -1916,7 +1957,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.3.1
   ///
   /// **Remarks:**
-  /// - The `data_list` must be released with bt_adapter_le_free_service_data_list() by you .
+  /// - The `data_list` must be released with
+  /// - bt_adapter_le_free_service_data_list() by you .
   ///
   /// **Parameters:**
   /// - `info` (in): The scan result information
@@ -2137,7 +2179,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 4.0
   ///
   /// **Remarks:**
-  /// - The `ibeacon_info` must be released with bt_adapter_le_free_ibeacon_report().
+  /// - The `ibeacon_info` must be released with
+  /// - bt_adapter_le_free_ibeacon_report().
   ///
   /// **Parameters:**
   /// - `info` (in): The scan result information
@@ -2236,7 +2279,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - The `advertiser` should be released using bt_adapter_le_destroy_advertiser().
+  /// - The `advertiser` should be released using
+  /// - bt_adapter_le_destroy_advertiser().
   ///
   /// **Parameters:**
   /// - `advertiser` (out): The handle of advertiser
@@ -2587,10 +2631,11 @@ class Tizen90CapiNetworkBluetooth {
   /// - 16-bit UUID or 128-bit UUID is supported.
   /// - (e.g. 180F, 0000180F-0000-1000-8000-00805F9B34FB).
   /// - 16-bit UUID is advertised as 16-bit UUID.
-  /// - 128-bit UUID made from base UUID(00000000-0000-1000-8000-00805F9B34FB)
-  /// - is converted to the 16-bit equivalent form and advertised as such.
-  /// - (e.g. 0000180F-0000-1000-8000-00805F9B34FB is converted to 180F 16-bit form).
-  /// - Any other 128-bit UUID is advertised as 128-bit UUID.
+  /// - 128-bit UUID made from base
+  /// - UUID(00000000-0000-1000-8000-00805F9B34FB) is converted to the 16-bit
+  /// - equivalent form and advertised as such. (e.g.
+  /// - 0000180F-0000-1000-8000-00805F9B34FB is converted to 180F 16-bit form). Any
+  /// - other 128-bit UUID is advertised as 128-bit UUID.
   ///
   /// **Parameters:**
   /// - `advertiser` (in): The handle of advertiser
@@ -2643,13 +2688,13 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.3.1
   ///
   /// **Remarks:**
-  /// - 16-bit service solicitation UUID or 128-bit service solicitation UUID is supported.
-  /// - (e.g. 180F, 0000180F-0000-1000-8000-00805F9B34FB).
-  /// - 16-bit UUID is advertised as 16-bit UUID.
-  /// - 128-bit UUID made from base UUID(00000000-0000-1000-8000-00805F9B34FB)
-  /// - is converted to the 16-bit equivalent form and advertised as such.
-  /// - (e.g. 0000180F-0000-1000-8000-00805F9B34FB is converted to 180F 16-bit form).
-  /// - Any other 128-bit UUID is advertised as 128-bit UUID.
+  /// - 16-bit service solicitation UUID or 128-bit service solicitation
+  /// - UUID is supported. (e.g. 180F, 0000180F-0000-1000-8000-00805F9B34FB). 16-bit
+  /// - UUID is advertised as 16-bit UUID. 128-bit UUID made from base
+  /// - UUID(00000000-0000-1000-8000-00805F9B34FB) is converted to the 16-bit
+  /// - equivalent form and advertised as such. (e.g.
+  /// - 0000180F-0000-1000-8000-00805F9B34FB is converted to 180F 16-bit form). Any
+  /// - other 128-bit UUID is advertised as 128-bit UUID.
   ///
   /// **Parameters:**
   /// - `advertiser` (in): The handle of advertiser
@@ -3407,7 +3452,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - Use this function when the remote Bluetooth device is not responding to the
+  /// - Use this function when the remote Bluetooth device is not responding
+  /// - to the
   /// - bond request or you wish to cancel the bonding request.
   ///
   /// **Returns:**
@@ -3565,7 +3611,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - Once a device is authorized, you don't need to receive a confirmation.
+  /// - Once a device is authorized, you don't need to receive a
+  /// - confirmation.
   ///
   /// **Parameters:**
   /// - `remote_address` (in): The address of the remote Bluetooth device to authorize
@@ -3628,9 +3675,12 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - If creating a bond succeeds, which means bt_device_bond_created_cb() is called with result `BT_ERROR_NONE`,
-  /// - then you don't need to run this function.
-  /// - The service search takes a couple of seconds to complete normally.
+  /// - If creating a bond succeeds, which means bt_device_bond_created_cb()
+  /// - is called with result `BT_ERROR_NONE`,
+  /// - then you don't need to run this
+  /// - function.
+  /// - The service search takes a couple of seconds to complete
+  /// - normally.
   ///
   /// **Parameters:**
   /// - `remote_address` (in): The address of the remote Bluetooth device whose services need to be checked
@@ -4305,8 +4355,11 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - If callback function bt_socket_connection_state_changed_cb() is set and the remote Bluetooth device is connected,
-  /// - then bt_socket_connection_state_changed_cb() will be called when this function is finished successfully.
+  /// - If callback function bt_socket_connection_state_changed_cb() is set
+  /// - and the remote Bluetooth device is connected,
+  /// - then
+  /// - bt_socket_connection_state_changed_cb() will be called when this function is
+  /// - finished successfully.
   ///
   /// **Parameters:**
   /// - `socket_fd` (in): The file descriptor of socket (which was created using bt_socket_create_rfcomm()) to destroy
@@ -4353,7 +4406,9 @@ class Tizen90CapiNetworkBluetooth {
 
   /// Starts listening on passed RFCOMM socket and accepts connection requests.
   ///
-  /// Pop-up is shown automatically when a RFCOMM connection is requested. bt_socket_connection_state_changed_cb() will be called with `BT_SOCKET_CONNECTED` if you click "yes" and connection is finished successfully.
+  /// Pop-up is shown automatically when a RFCOMM connection is requested.
+  ///
+  /// bt_socket_connection_state_changed_cb() will be called with `BT_SOCKET_CONNECTED` if you click "yes" and connection is finished successfully.
   ///
   /// **Since Tizen:**
   /// - 2.3
@@ -4538,7 +4593,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - The specific error code can be obtained using the get_last_result() method. Error codes are described in Exception section.
+  /// - The specific error code can be obtained using the get_last_result()
+  /// - method. Error codes are described in Exception section.
   ///
   /// **Parameters:**
   /// - `socket_fd` (in): The file descriptor of connected socket which was received using bt_socket_connection_state_changed_cb()
@@ -4843,7 +4899,8 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - This function must be called to start Bluetooth OPP server.
-  /// - You must free all resources of the Bluetooth service by calling bt_opp_server_deinitialize() if Bluetooth OPP service is no longer needed.
+  /// - You must free all resources of the Bluetooth service by calling
+  /// - bt_opp_server_deinitialize() if Bluetooth OPP service is no longer needed.
   ///
   /// **Parameters:**
   /// - `destination` (in): The destination path
@@ -4936,8 +4993,9 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - If you initialize OPP server by bt_opp_server_initialize_by_connection_request(), then name is ignored.
-  /// - You can cancel the pushes by bt_opp_server_cancel_transfer() with transfer_id.
+  /// - If you initialize OPP server by
+  /// - bt_opp_server_initialize_by_connection_request(), then name is ignored. You
+  /// - can cancel the pushes by bt_opp_server_cancel_transfer() with transfer_id.
   ///
   /// **Parameters:**
   /// - `progress_cb` (in): The callback called when a file is being transferred
@@ -5126,7 +5184,8 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - This function must be called before Bluetooth OPP client starts.
-  /// - You must free all resources of the Bluetooth service by calling bt_opp_client_deinitialize()
+  /// - You must free all resources of the Bluetooth service by calling
+  /// - bt_opp_client_deinitialize()
   /// - if Bluetooth OPP service is no longer needed.
   ///
   /// **Returns:**
@@ -5376,8 +5435,10 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - This function must be called before Bluetooth HID Host starts.
-  /// - You must free all resources of the Bluetooth service by calling bt_hid_host_deinitialize()
-  /// - if Bluetooth HID Host service is no longer needed.
+  /// - You must free all resources of the Bluetooth service by calling
+  /// - bt_hid_host_deinitialize()
+  /// - if Bluetooth HID Host service is no longer
+  /// - needed.
   ///
   /// **Parameters:**
   /// - `connection_cb` (in): The callback called when the connection state is changed
@@ -5674,7 +5735,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - This function must be called to Initiate the HID device role connection.
+  /// - This function must be called to Initiate the HID device role
+  /// - connection.
   ///
   /// **Parameters:**
   /// - `remote_address` (in): The remote device's address.
@@ -6019,9 +6081,12 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.3
   ///
   /// **Remarks:**
-  /// - This function must be called before Bluetooth profiles related with audio starts.
-  /// - You must free all resources of the this service by calling bt_audio_deinitialize()
-  /// - if Bluetooth profiles related with audio service is no longer needed.
+  /// - This function must be called before Bluetooth profiles related with
+  /// - audio starts.
+  /// - You must free all resources of the this service by calling
+  /// - bt_audio_deinitialize()
+  /// - if Bluetooth profiles related with audio service
+  /// - is no longer needed.
   ///
   /// **Returns:**
   /// - 0 on success, otherwise a negative error value.
@@ -6285,9 +6350,12 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.4
   ///
   /// **Remarks:**
-  /// - This function must be called before any other AVRCP target functions are called.
-  /// - You must free all resources of the this service by calling bt_avrcp_target_deinitialize()
-  /// - if Bluetooth AVRCP service is no longer needed.
+  /// - This function must be called before any other AVRCP target functions
+  /// - are called.
+  /// - You must free all resources of the this service by calling
+  /// - bt_avrcp_target_deinitialize()
+  /// - if Bluetooth AVRCP service is no longer
+  /// - needed.
   ///
   /// **Parameters:**
   /// - `callback` (in): The callback function called when the connection state is changed
@@ -7306,9 +7374,12 @@ class Tizen90CapiNetworkBluetooth {
   /// - 3.0
   ///
   /// **Remarks:**
-  /// - This function must be called before any other AVRCP controller functions are called.
-  /// - You must free all resources of the this service by calling bt_avrcp_control_deinitialize()
-  /// - if Bluetooth AVRCP service is no longer needed.
+  /// - This function must be called before any other AVRCP controller
+  /// - functions are called.
+  /// - You must free all resources of the this service by
+  /// - calling bt_avrcp_control_deinitialize()
+  /// - if Bluetooth AVRCP service is no
+  /// - longer needed.
   ///
   /// **Parameters:**
   /// - `callback` (in): The callback function called when the connection state is changed
@@ -7995,7 +8066,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 3.0
   ///
   /// **Remarks:**
-  /// - The `track` must be released using bt_avrcp_control_free_track_info().
+  /// - The `track` must be released using
+  /// - bt_avrcp_control_free_track_info().
   ///
   /// **Parameters:**
   /// - `track` (out): The track metadata.
@@ -8562,8 +8634,10 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - `value` must be released using free().
-  /// - When `gatt_handle` is associated with bt_gatt_client_h, bt_gatt_client_read_value() must be used prior to this function
-  /// - in order to get the remote device's current value.
+  /// - When `gatt_handle` is associated with bt_gatt_client_h,
+  /// - bt_gatt_client_read_value() must be used prior to this function
+  /// - in order
+  /// - to get the remote device's current value.
   ///
   /// **Parameters:**
   /// - `gatt_handle` (in): The handle of a characteristic or descriptor
@@ -8607,13 +8681,15 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - This function returns a locally saved value in `gatt_handle`.
-  /// - When `gatt_handle` is associated with bt_gatt_client_h, bt_gatt_client_read_value() must be used prior to this function
-  /// - in order to get the remote device's current value.
+  /// - When `gatt_handle` is associated with bt_gatt_client_h,
+  /// - bt_gatt_client_read_value() must be used prior to this function
+  /// - in order
+  /// - to get the remote device's current value.
   ///
   /// **Parameters:**
   /// - `gatt_handle` (in): The handle of a characteristic or descriptor
   /// - `type` (in): The type of a saved value in `gatt_handle`
-  /// - `offset` (in): The offset from where a value will be read from `gatt_handle` as an integer type
+  /// - `offset` (in): The offset from where a value will be read from @a gatt_handle as an integer type
   /// - `value` (out): The integer type's value of `gatt_handle`
   ///
   /// **Returns:**
@@ -8654,13 +8730,15 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - This function returns a locally saved value in `gatt_handle`.
-  /// - When `gatt_handle` is associated with bt_gatt_client_h, bt_gatt_client_read_value() must be used prior to this function
-  /// - in order to get the remote device's current value.
+  /// - When `gatt_handle` is associated with bt_gatt_client_h,
+  /// - bt_gatt_client_read_value() must be used prior to this function
+  /// - in order
+  /// - to get the remote device's current value.
   ///
   /// **Parameters:**
   /// - `gatt_handle` (in): The handle of a characteristic or descriptor
   /// - `type` (in): The type of a saved value in `gatt_handle`
-  /// - `offset` (in): The offset from where a value will be read from `gatt_handle` as an integer type
+  /// - `offset` (in): The offset from where a value will be read from @a gatt_handle as an integer type
   /// - `value` (out): The float type's value of `gatt_handle`
   ///
   /// **Returns:**
@@ -8701,8 +8779,10 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - This function updates a value of `gatt_handle` locally.
-  /// - When `gatt_handle` is associated with bt_gatt_client_h, bt_gatt_client_write_value() can be used after this function
-  /// - in order to update the remote device's value.
+  /// - When `gatt_handle` is associated with bt_gatt_client_h,
+  /// - bt_gatt_client_write_value() can be used after this function
+  /// - in order to
+  /// - update the remote device's value.
   ///
   /// **Parameters:**
   /// - `gatt_handle` (in): The handle of a characteristic or descriptor
@@ -8746,14 +8826,16 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - This function updates a value of `gatt_handle` locally.
-  /// - When `gatt_handle` is associated with bt_gatt_client_h, bt_gatt_client_write_value() can be used after this function
-  /// - in order to update the remote device's value.
+  /// - When `gatt_handle` is associated with bt_gatt_client_h,
+  /// - bt_gatt_client_write_value() can be used after this function
+  /// - in order to
+  /// - update the remote device's value.
   ///
   /// **Parameters:**
   /// - `gatt_handle` (in): The handle of a characteristic or descriptor
   /// - `type` (in): `value` will be saved in `gatt_handle` as this type
   /// - `value` (in): The integer type's value to be updated
-  /// - `offset` (in): The offset from where `value` will be saved in `gatt_handle`
+  /// - `offset` (in): The offset from where `value` will be saved in @a gatt_handle
   ///
   /// **Returns:**
   /// - 0 on success, otherwise a negative error value
@@ -8794,8 +8876,10 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - This function updates a value of `gatt_handle` locally.
-  /// - When `gatt_handle` is associated with bt_gatt_client_h, bt_gatt_client_write_value() can be used after this function
-  /// - in order to update the remote device's value.
+  /// - When `gatt_handle` is associated with bt_gatt_client_h,
+  /// - bt_gatt_client_write_value() can be used after this function
+  /// - in order to
+  /// - update the remote device's value.
   ///
   /// **Parameters:**
   /// - `gatt_handle` (in): The handle of a characteristic or descriptor
@@ -8845,7 +8929,8 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - `uuid` must be released using free().
-  /// - 16-bit UUID or 128-bit UUID is supported. (e.g. 2A19, 00002A19-0000-1000-8000-00805F9B34FB).
+  /// - 16-bit UUID or 128-bit UUID is supported. (e.g. 2A19,
+  /// - 00002A19-0000-1000-8000-00805F9B34FB).
   ///
   /// **Parameters:**
   /// - `gatt_handle` (in): The handle of a service, characteristic or descriptor
@@ -8921,8 +9006,10 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - This function doesn't allocate new memory for GATT client handle.
-  /// - The returned GATT client handle is the same one which was got from bt_gatt_client_create().
-  /// - So if it is destroyed by bt_gatt_client_destroy(), all related GATT handles are freed also.
+  /// - The returned GATT client handle is the same one which was got from
+  /// - bt_gatt_client_create().
+  /// - So if it is destroyed by
+  /// - bt_gatt_client_destroy(), all related GATT handles are freed also.
   ///
   /// **Parameters:**
   /// - `service` (in): The service's GATT handle
@@ -8965,8 +9052,10 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - The returned GATT handle must not be freed by application.
-  /// - It will be freed when an associated client is destroyed by bt_gatt_client_destroy().
-  /// - If there are multiple characteristics which have same UUID, only the first matched one will be returned.
+  /// - It will be freed when an associated client is destroyed by
+  /// - bt_gatt_client_destroy().
+  /// - If there are multiple characteristics which have
+  /// - same UUID, only the first matched one will be returned.
   ///
   /// **Parameters:**
   /// - `service` (in): The service's GATT handle
@@ -9056,13 +9145,15 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - The returned GATT handle must not be freed by application.
-  /// - It will be freed when an associated client is destroyed by bt_gatt_client_destroy().
-  /// - If there are multiple included services which have same UUID, only the first matched one will be returned.
+  /// - It will be freed when an associated client is destroyed by
+  /// - bt_gatt_client_destroy().
+  /// - If there are multiple included services which
+  /// - have same UUID, only the first matched one will be returned.
   ///
   /// **Parameters:**
   /// - `service` (in): The service's GATT handle
   /// - `uuid` (in): The included service's GATT handle which has this UUID will be returned if it exists
-  /// - `included_service` (out): The included service's GATT handle which has `uuid` if it exists
+  /// - `included_service` (out): The included service's GATT handle which has @a uuid if it exists
   ///
   /// **Returns:**
   /// - 0 on success, otherwise a negative error value
@@ -9147,7 +9238,8 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - The returned GATT handle must not be freed by application.
-  /// - It will be freed when an associated client is destroyed by bt_gatt_client_destroy().
+  /// - It will be freed when an associated client is destroyed by
+  /// - bt_gatt_client_destroy().
   ///
   /// **Parameters:**
   /// - `characteristic` (in): The characteristic's GATT handle
@@ -9308,8 +9400,10 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - The returned GATT handle must not be freed by application.
-  /// - It will be freed when an associated client is destroyed by bt_gatt_client_destroy().
-  /// - If there are multiple descriptors which have same UUID, only the first matched one will be returned.
+  /// - It will be freed when an associated client is destroyed by
+  /// - bt_gatt_client_destroy().
+  /// - If there are multiple descriptors which have
+  /// - same UUID, only the first matched one will be returned.
   ///
   /// **Parameters:**
   /// - `characteristic` (in): The characteristic's GATT handle
@@ -9400,11 +9494,12 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - The returned GATT handle must not be freed by application.
-  /// - It will be freed when an associated client is destroyed by bt_gatt_client_destroy().
+  /// - It will be freed when an associated client is destroyed by
+  /// - bt_gatt_client_destroy().
   ///
   /// **Parameters:**
   /// - `descriptor` (in): The descriptor's GATT handle
-  /// - `characteristic` (out): The characteristic's GATT handle which `descriptor` belongs to
+  /// - `characteristic` (out): The characteristic's GATT handle which @a descriptor belongs to
   ///
   /// **Returns:**
   /// - 0 on success, otherwise a negative error value
@@ -9440,7 +9535,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.3.1
   ///
   /// **Remarks:**
-  /// - The GATT client handle must be freed by bt_gatt_client_destroy() after use.
+  /// - The GATT client handle must be freed by bt_gatt_client_destroy()
+  /// - after use.
   ///
   /// **Parameters:**
   /// - `remote_address` (in): The address of the remote device
@@ -9484,7 +9580,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 2.3.1
   ///
   /// **Remarks:**
-  /// - All related service, characteristic and descriptor's GATT handles are freed also.
+  /// - All related service, characteristic and descriptor's GATT handles
+  /// - are freed also.
   ///
   /// **Parameters:**
   /// - `client` (in): The GATT client's handle
@@ -9969,8 +10066,10 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - The returned GATT handle must not be freed by application.
-  /// - It will be freed when an associated client is destroyed by bt_gatt_client_destroy().
-  /// - If there are multiple services which have same UUID, only the first matched one will be returned.
+  /// - It will be freed when an associated client is destroyed by
+  /// - bt_gatt_client_destroy().
+  /// - If there are multiple services which have same
+  /// - UUID, only the first matched one will be returned.
   ///
   /// **Parameters:**
   /// - `client` (in): The GATT client's handle
@@ -10435,7 +10534,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 3.0
   ///
   /// **Remarks:**
-  /// - The `permissions` can be one or more values of `bt_gatt_permission_e`, combined with bitwise 'or'.
+  /// - The `permissions` can be one or more values of
+  /// - `bt_gatt_permission_e`, combined with bitwise 'or'.
   ///
   /// **Parameters:**
   /// - `gatt_handle` (in): The handle of a characteristic
@@ -10479,7 +10579,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 3.0
   ///
   /// **Remarks:**
-  /// - The `permissions` can be one or more values of `bt_gatt_permission_e`, combined with bitwise 'or'.
+  /// - The `permissions` can be one or more values of
+  /// - `bt_gatt_permission_e`, combined with bitwise 'or'.
   ///
   /// **Parameters:**
   /// - `gatt_handle` (in): The handle of a descriptor
@@ -10523,7 +10624,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 3.0
   ///
   /// **Remarks:**
-  /// - The `service` should be destroyed by using bt_gatt_service_destroy().
+  /// - The `service` should be destroyed by using
+  /// - bt_gatt_service_destroy().
   ///
   /// **Parameters:**
   /// - `uuid` (in): The UUID of the service
@@ -10692,9 +10794,12 @@ class Tizen90CapiNetworkBluetooth {
   /// - 3.0
   ///
   /// **Remarks:**
-  /// - The `permissions` can be one or more values of `bt_gatt_permission_e`, combined with bitwise 'or'.
-  /// - The `properties` can be one or more values of `bt_gatt_property_e`, combined with bitwise 'or'.
-  /// - The `characteristic` should be destroyed by using bt_gatt_characteristic_destroy().
+  /// - The `permissions` can be one or more values of
+  /// - `bt_gatt_permission_e`, combined with bitwise 'or'.
+  /// - The `properties` can be one or more values of `bt_gatt_property_e`,
+  /// - combined with bitwise 'or'.
+  /// - The `characteristic` should be destroyed by using
+  /// - bt_gatt_characteristic_destroy().
   ///
   /// **Parameters:**
   /// - `uuid` (in): The UUID of the characteristic
@@ -10796,8 +10901,10 @@ class Tizen90CapiNetworkBluetooth {
   /// - 3.0
   ///
   /// **Remarks:**
-  /// - The `permissions` can be one or more values of `bt_gatt_permission_e`, combined with bitwise 'or'.
-  /// - The `descriptor` should be destroyed by using bt_gatt_descriptor_destroy().
+  /// - The `permissions` can be one or more values of
+  /// - `bt_gatt_permission_e`, combined with bitwise 'or'.
+  /// - The `descriptor` should be destroyed by using
+  /// - bt_gatt_descriptor_destroy().
   ///
   /// **Parameters:**
   /// - `uuid` (in): The UUID of the descriptor
@@ -10919,7 +11026,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 3.0
   ///
   /// **Remarks:**
-  /// - The `server` handle should be destroyed by using bt_gatt_server_destroy().
+  /// - The `server` handle should be destroyed by using
+  /// - bt_gatt_server_destroy().
   ///
   /// **Parameters:**
   /// - `server` (out): The GATT server's handle
@@ -11432,8 +11540,10 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - The returned GATT handle must not be freed by application.
-  /// - It will be freed when an associated server is destroyed by bt_gatt_server_destroy().
-  /// - If there are multiple services which have same UUID, only the first matched one will be returned.
+  /// - It will be freed when an associated server is destroyed by
+  /// - bt_gatt_server_destroy().
+  /// - If there are multiple services which have same
+  /// - UUID, only the first matched one will be returned.
   ///
   /// **Parameters:**
   /// - `server` (in): The GATT server's handle
@@ -11564,8 +11674,10 @@ class Tizen90CapiNetworkBluetooth {
   /// - 3.0
   ///
   /// **Remarks:**
-  /// - This function must be called to initialize Bluetooth PBAP client. You must free all resources of the Bluetooth service
-  /// - by calling bt_pbap_client_deinitialize() if Bluetooth PBAP Client is no longer needed.
+  /// - This function must be called to initialize Bluetooth PBAP client.
+  /// - You must free all resources of the Bluetooth service
+  /// - by calling
+  /// - bt_pbap_client_deinitialize() if Bluetooth PBAP Client is no longer needed.
   ///
   /// **Returns:**
   /// - 0 on success, otherwise a negative error value.
@@ -12266,7 +12378,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 4.0
   ///
   /// **Remarks:**
-  /// - The `scan_filter` should be destroyed with bt_adapter_le_scan_filter_destroy().
+  /// - The `scan_filter` should be destroyed with
+  /// - bt_adapter_le_scan_filter_destroy().
   ///
   /// **Parameters:**
   /// - `scan_filter` (out): The scan filter handle
@@ -12574,7 +12687,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 4.0
   ///
   /// **Remarks:**
-  /// - The `mask` and the service solicitation `uuid` must have equal lengths.
+  /// - The `mask` and the service solicitation `uuid` must have equal
+  /// - lengths.
   ///
   /// **Parameters:**
   /// - `scan_filter` (in): The scan filter handle
@@ -12899,6 +13013,8 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// If the filter is registered, it cannot be changed.
   ///
+  /// any of the registered scan filters, it will be included in the results.
+  ///
   /// **Since Tizen:**
   /// - 4.0
   ///
@@ -12910,7 +13026,6 @@ class Tizen90CapiNetworkBluetooth {
   ///
   /// **Remarks:**
   /// - Several scan filters can be registered. If an advertisement passes
-  /// - any of the registered scan filters, it will be included in the results.
   ///
   /// **Parameters:**
   /// - `scan_filter` (in): The scan filter handle
@@ -13033,7 +13148,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 5.0
   ///
   /// **Remarks:**
-  /// - The LE 2M PHY feature was introduced in the BT 5.0 core specification.
+  /// - The LE 2M PHY feature was introduced in the BT 5.0 core
+  /// - specification.
   ///
   /// **Parameters:**
   /// - `is_supported` (out): The LE 2M PHY feature support: (`true` = supported , `false` = not supported)
@@ -13075,7 +13191,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 5.0
   ///
   /// **Remarks:**
-  /// - The LE CODED PHY feature was introduced in the BT 5.0 core specification.
+  /// - The LE CODED PHY feature was introduced in the BT 5.0 core
+  /// - specification.
   ///
   /// **Parameters:**
   /// - `is_supported` (out): The LE CODED PHY feature support: (`true` = supported , `false` = not supported)
@@ -13181,8 +13298,11 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - If callback function bt_socket_l2cap_channel_connection_state_changed_cb() is set and the remote Bluetooth device is connected,
-  /// - then bt_socket_l2cap_channel_connection_state_changed_cb() will be called when this function is finished successfully.
+  /// - If callback function
+  /// - bt_socket_l2cap_channel_connection_state_changed_cb() is set and the remote
+  /// - Bluetooth device is connected, then
+  /// - bt_socket_l2cap_channel_connection_state_changed_cb() will be called when
+  /// - this function is finished successfully.
   ///
   /// **Parameters:**
   /// - `socket_fd` (in): The file descriptor of socket (which was created using bt_socket_create_l2cap_channel()) to destroy
@@ -13353,7 +13473,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - A connection can be disconnected by bt_socket_disconnect_l2cap_channel().
+  /// - A connection can be disconnected by
+  /// - bt_socket_disconnect_l2cap_channel().
   ///
   /// **Parameters:**
   /// - `remote_address` (in): The address of the remote Bluetooth device
@@ -13466,7 +13587,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - <http://tizen.org/privilege/bluetooth>
   ///
   /// **Remarks:**
-  /// - The specific error code can be obtained using the get_last_result() method. Error codes are described in Exception section.
+  /// - The specific error code can be obtained using the get_last_result()
+  /// - method. Error codes are described in Exception section.
   ///
   /// **Parameters:**
   /// - `socket_fd` (in): The file descriptor of connected socket which was received using bt_socket_l2cap_channel_connection_state_changed_cb()
@@ -14160,10 +14282,11 @@ class Tizen90CapiNetworkBluetooth {
   /// - 8.0
   ///
   /// **Remarks:**
-  /// - The LE Extended Advertising feature was introduced in the BT 5.0 core specification.
+  /// - The LE Extended Advertising feature was introduced in the BT 5.0
+  /// - core specification.
   ///
   /// **Parameters:**
-  /// - `is_supported` (out): The LE Extended Advertising feature support: (`true` = supported , `false` = not supported)
+  /// - `is_supported` (out): The LE Extended Advertising feature support: (@c true = supported , `false` = not supported)
   ///
   /// **Returns:**
   /// - 0 on success, otherwise a negative error value.
@@ -14202,7 +14325,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 8.0
   ///
   /// **Remarks:**
-  /// - The LE Extended Scan feature was introduced in the BT 5.0 core specification.
+  /// - The LE Extended Scan feature was introduced in the BT 5.0 core
+  /// - specification.
   ///
   /// **Parameters:**
   /// - `is_supported` (out): The LE Extended Scan feature support: (`true` = supported , `false` = not supported)
@@ -14244,7 +14368,8 @@ class Tizen90CapiNetworkBluetooth {
   /// - 8.0
   ///
   /// **Remarks:**
-  /// - The LE Maximum Advertising Data Length feature was introduced in the BT 5.0 core specification.
+  /// - The LE Maximum Advertising Data Length feature was introduced in the
+  /// - BT 5.0 core specification.
   ///
   /// **Parameters:**
   /// - `data_length` (out): The maximum length supported by controller for use as advertisement data or scan response data

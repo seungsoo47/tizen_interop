@@ -90,9 +90,12 @@ int32_t TizenInteropCallbacksRegisterSendPort(Dart_Port port) {
       callback_pointers.clear();
       return 2;
     }
+  } else {
+    LOG_ERROR("No send_port");
   }
   send_port = port;
   interop_callbacks_thread_id = gettid();
+  LOG_ERROR("interop_callbacks_thread_id: %lu", interop_callbacks_thread_id);
   return 0;
 }
 

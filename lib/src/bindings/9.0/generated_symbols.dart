@@ -723,6 +723,7 @@ const Map<String, List<String>> messagePortSymbols = {
 const Map<String, List<String>> notificationSymbols = {
   'libnotification.so.0': [
     'notification_add_button',
+    'notification_clear',
     'notification_clone',
     'notification_create',
     'notification_create_from_template',
@@ -739,6 +740,7 @@ const Map<String, List<String>> notificationSymbols = {
     'notification_get_layout',
     'notification_get_led',
     'notification_get_led_time_period',
+    'notification_get_list',
     'notification_get_noti_block_state',
     'notification_get_pkgname',
     'notification_get_progress',
@@ -753,6 +755,7 @@ const Map<String, List<String>> notificationSymbols = {
     'notification_get_vibration',
     'notification_load_by_tag',
     'notification_post',
+    'notification_register_detailed_changed_cb',
     'notification_remove_button',
     'notification_save_as_template',
     'notification_set_auto_remove',
@@ -775,6 +778,8 @@ const Map<String, List<String>> notificationSymbols = {
     'notification_set_time_to_text',
     'notification_set_vibration',
     'notification_status_message_post',
+    'notification_status_monitor_message_cb_set',
+    'notification_unregister_detailed_changed_cb',
     'notification_update',
   ],
 };
@@ -3258,6 +3263,8 @@ const Map<String, List<String>> aspSymbols = {
 /// @nodoc
 const Map<String, List<String>> capiNetworkBluetoothSymbols = {
   'libcapi-network-bluetooth.so.0': [
+    'bt_adapter_disable',
+    'bt_adapter_enable',
     'bt_adapter_foreach_bonded_device',
     'bt_adapter_free_device_info',
     'bt_adapter_get_address',
@@ -6513,6 +6520,62 @@ const Map<String, List<String>> vcManagerSymbols = {
     'vc_mgr_unset_speech_detected_cb',
     'vc_mgr_unset_state_changed_cb',
     'vc_mgr_unset_vc_tts_streaming_cb',
+  ],
+};
+
+/// @nodoc
+const Map<String, List<String>> ttsSettingSymbols = {
+  'libtts_setting.so': [
+    'tts_setting_finalize',
+    'tts_setting_foreach_supported_engines',
+    'tts_setting_foreach_supported_voices',
+    'tts_setting_get_auto_voice',
+    'tts_setting_get_background_volume_ratio',
+    'tts_setting_get_engine',
+    'tts_setting_get_pitch',
+    'tts_setting_get_pitch_range',
+    'tts_setting_get_speed',
+    'tts_setting_get_speed_range',
+    'tts_setting_get_voice',
+    'tts_setting_initialize',
+    'tts_setting_set_auto_voice',
+    'tts_setting_set_background_volume_ratio',
+    'tts_setting_set_background_volume_ratio_changed_cb',
+    'tts_setting_set_engine',
+    'tts_setting_set_engine_changed_cb',
+    'tts_setting_set_pitch',
+    'tts_setting_set_pitch_changed_cb',
+    'tts_setting_set_speed',
+    'tts_setting_set_speed_changed_cb',
+    'tts_setting_set_voice',
+    'tts_setting_set_voice_changed_cb',
+    'tts_setting_unset_background_volume_ratio_changed_cb',
+    'tts_setting_unset_engine_changed_cb',
+    'tts_setting_unset_pitch_changed_cb',
+    'tts_setting_unset_speed_changed_cb',
+    'tts_setting_unset_voice_changed_cb',
+  ],
+};
+
+/// @nodoc
+const Map<String, List<String>> sttSettingSymbols = {
+  'libstt_setting.so': [
+    'stt_setting_finalize',
+    'stt_setting_foreach_supported_engines',
+    'stt_setting_foreach_supported_languages',
+    'stt_setting_get_auto_language',
+    'stt_setting_get_default_language',
+    'stt_setting_get_engine',
+    'stt_setting_get_silence_detection',
+    'stt_setting_initialize',
+    'stt_setting_set_auto_language',
+    'stt_setting_set_config_changed_cb',
+    'stt_setting_set_default_language',
+    'stt_setting_set_engine',
+    'stt_setting_set_engine_changed_cb',
+    'stt_setting_set_silence_detection',
+    'stt_setting_unset_config_changed_cb',
+    'stt_setting_unset_engine_changed_cb',
   ],
 };
 

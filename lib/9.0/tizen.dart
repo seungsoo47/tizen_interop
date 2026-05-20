@@ -123,11 +123,13 @@ import '../../src/bindings/9.0/generated_bindings_rpc_port.dart';
 import '../../src/bindings/9.0/generated_bindings_storage.dart';
 import '../../src/bindings/9.0/generated_bindings_stt.dart';
 import '../../src/bindings/9.0/generated_bindings_stt_engine.dart';
+import '../../src/bindings/9.0/generated_bindings_stt_setting.dart';
 import '../../src/bindings/9.0/generated_bindings_tbm.dart';
 import '../../src/bindings/9.0/generated_bindings_tizen_core.dart';
 import '../../src/bindings/9.0/generated_bindings_ttrace.dart';
 import '../../src/bindings/9.0/generated_bindings_tts.dart';
 import '../../src/bindings/9.0/generated_bindings_tts_engine.dart';
+import '../../src/bindings/9.0/generated_bindings_tts_setting.dart';
 import '../../src/bindings/9.0/generated_bindings_update_control.dart';
 import '../../src/bindings/9.0/generated_bindings_vc.dart';
 import '../../src/bindings/9.0/generated_bindings_vc_engine.dart';
@@ -259,11 +261,13 @@ export '../../src/bindings/9.0/generated_bindings_rpc_port.dart';
 export '../../src/bindings/9.0/generated_bindings_storage.dart';
 export '../../src/bindings/9.0/generated_bindings_stt.dart';
 export '../../src/bindings/9.0/generated_bindings_stt_engine.dart';
+export '../../src/bindings/9.0/generated_bindings_stt_setting.dart';
 export '../../src/bindings/9.0/generated_bindings_tbm.dart';
 export '../../src/bindings/9.0/generated_bindings_tizen_core.dart';
 export '../../src/bindings/9.0/generated_bindings_ttrace.dart';
 export '../../src/bindings/9.0/generated_bindings_tts.dart';
 export '../../src/bindings/9.0/generated_bindings_tts_engine.dart';
+export '../../src/bindings/9.0/generated_bindings_tts_setting.dart';
 export '../../src/bindings/9.0/generated_bindings_update_control.dart';
 export '../../src/bindings/9.0/generated_bindings_vc.dart';
 export '../../src/bindings/9.0/generated_bindings_vc_engine.dart';
@@ -839,6 +843,10 @@ Tizen90SttEngine? _tizenSttEngine;
 Tizen90SttEngine get tizenSttEngine => _tizenSttEngine ??=
     _getTizenInstance(sttEngineSymbols, Tizen90SttEngine.fromLookup)!;
 
+Tizen90SttSetting? _tizenSttSetting;
+Tizen90SttSetting get tizenSttSetting => _tizenSttSetting ??=
+    _getTizenInstance(sttSettingSymbols, Tizen90SttSetting.fromLookup)!;
+
 Tizen90Tbm? _tizenTbm;
 Tizen90Tbm get tizenTbm =>
     _tizenTbm ??= _getTizenInstance(tbmSymbols, Tizen90Tbm.fromLookup)!;
@@ -858,6 +866,10 @@ Tizen90Tts get tizenTts =>
 Tizen90TtsEngine? _tizenTtsEngine;
 Tizen90TtsEngine get tizenTtsEngine => _tizenTtsEngine ??=
     _getTizenInstance(ttsEngineSymbols, Tizen90TtsEngine.fromLookup)!;
+
+Tizen90TtsSetting? _tizenTtsSetting;
+Tizen90TtsSetting get tizenTtsSetting => _tizenTtsSetting ??=
+    _getTizenInstance(ttsSettingSymbols, Tizen90TtsSetting.fromLookup)!;
 
 Tizen90UpdateControl? _tizenUpdateControl;
 Tizen90UpdateControl get tizenUpdateControl => _tizenUpdateControl ??=
